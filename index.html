@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -157,15 +156,18 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 15px;
-            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
             position: relative;
             z-index: 1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .app-name {
@@ -243,6 +245,13 @@
             font-size: 1.8rem;
             color: white;
             margin-right: 20px;
+            overflow: hidden;
+        }
+
+        .modal-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .modal-title {
@@ -385,55 +394,73 @@
 
         <div class="apps-grid">
             <div class="app-card" onclick="openModal('nback')">
-                <div class="app-icon">🧠</div>
+                <div class="app-icon">
+                    <img src="1.png" alt="N-Back 40Hz">
+                </div>
                 <div class="app-name">N-Back 40Hz</div>
                 <div class="app-category">認知トレーニング</div>
             </div>
 
             <div class="app-card" onclick="openModal('rhythm')">
-                <div class="app-icon">🎵</div>
+                <div class="app-icon">
+                    <img src="2.png" alt="Rhythm Fighter">
+                </div>
                 <div class="app-name">Rhythm Fighter</div>
                 <div class="app-category">リズムゲーム</div>
             </div>
 
             <div class="app-card" onclick="openModal('wisconsin')">
-                <div class="app-icon">🃏</div>
+                <div class="app-icon">
+                    <img src="3.png" alt="Wisconsin Card">
+                </div>
                 <div class="app-name">Wisconsin Card</div>
                 <div class="app-category">認知柔軟性</div>
             </div>
 
             <div class="app-card" onclick="openModal('tone')">
-                <div class="app-icon">🔊</div>
+                <div class="app-icon">
+                    <img src="4.png" alt="Tone Generator">
+                </div>
                 <div class="app-name">Tone Generator</div>
                 <div class="app-category">音響療法</div>
             </div>
 
             <div class="app-card" onclick="openModal('okn')">
-                <div class="app-icon">👁️</div>
+                <div class="app-icon">
+                    <img src="5.png" alt="OKN Training">
+                </div>
                 <div class="app-name">OKN Training</div>
                 <div class="app-category">視覚訓練</div>
             </div>
 
             <div class="app-card" onclick="openModal('mirror')">
-                <div class="app-icon">🪞</div>
+                <div class="app-icon">
+                    <img src="6.png" alt="Mirror Box">
+                </div>
                 <div class="app-name">Mirror Box</div>
                 <div class="app-category">運動療法</div>
             </div>
 
             <div class="app-card" onclick="openModal('saccade')">
-                <div class="app-icon">👀</div>
+                <div class="app-icon">
+                    <img src="7.png" alt="Random Saccade">
+                </div>
                 <div class="app-name">Random Saccade</div>
                 <div class="app-category">眼球運動</div>
             </div>
 
             <div class="app-card" onclick="openModal('findnumber')">
-                <div class="app-icon">🔢</div>
+                <div class="app-icon">
+                    <img src="8.png" alt="Find Number">
+                </div>
                 <div class="app-name">Find Number</div>
                 <div class="app-category">注意力訓練</div>
             </div>
 
             <div class="app-card" onclick="openModal('gonogo')">
-                <div class="app-icon">⚡</div>
+                <div class="app-icon">
+                    <img src="9.png" alt="Go/No-Go Task">
+                </div>
                 <div class="app-name">Go/No-Go Task</div>
                 <div class="app-category">抑制制御</div>
             </div>
@@ -452,7 +479,7 @@
             nback: {
                 name: 'N-Back 40Hz Gamma Wave',
                 category: '認知トレーニング',
-                icon: '🧠',
+                icon: '1.png',
                 description: 'N-Back課題と40Hzガンマ波刺激を組み合わせた革新的な認知トレーニングアプリです。ワーキングメモリの向上と、脳の神経同期を促進します。',
                 features: [
                     '科学的根拠に基づいた N-Back 課題',
@@ -466,7 +493,7 @@
             rhythm: {
                 name: 'Rhythm Fighter',
                 category: 'リズムゲーム',
-                icon: '🎵',
+                icon: '2.png',
                 description: 'リズムと反射神経を鍛える革新的なトレーニングゲームです。音楽に合わせて正確なタイミングで反応することで、運動協調性と認知機能を向上させます。',
                 features: [
                     'リズム感覚の向上',
@@ -480,7 +507,7 @@
             wisconsin: {
                 name: 'Wisconsin Card Sorting Task',
                 category: '認知柔軟性',
-                icon: '🃏',
+                icon: '3.png',
                 description: '認知柔軟性と実行機能を評価・訓練する神経心理学的検査をゲーム化したアプリです。ルールの変化に適応する能力を向上させます。',
                 features: [
                     '認知柔軟性の評価と訓練',
@@ -494,7 +521,7 @@
             tone: {
                 name: 'Tone Generator',
                 category: '音響療法',
-                icon: '🔊',
+                icon: '4.png',
                 description: '治療用の音波を生成する専門的なツールです。特定の周波数の音を使用して、聴覚刺激療法や音響治療をサポートします。',
                 features: [
                     '精密な周波数制御',
@@ -508,7 +535,7 @@
             okn: {
                 name: 'OKN Training',
                 category: '視覚訓練',
-                icon: '👁️',
+                icon: '5.png',
                 description: '視運動性眼振（OKN）を利用した視覚トレーニングアプリです。眼球運動の協調性と視覚追跡能力を改善します。',
                 features: [
                     '視運動性眼振の誘発',
@@ -522,7 +549,7 @@
             mirror: {
                 name: 'Mirror Box Therapy',
                 category: '運動療法',
-                icon: '🪞',
+                icon: '6.png',
                 description: 'ミラーセラピーの原理を応用したデジタル治療ツールです。運動機能の回復と幻肢痛の緩和をサポートします。',
                 features: [
                     '仮想ミラーボックス機能',
@@ -536,7 +563,7 @@
             saccade: {
                 name: 'Random Saccade Training',
                 category: '眼球運動',
-                icon: '👀',
+                icon: '7.png',
                 description: 'ランダムな視標を追跡することで、サッケード（跳躍性眼球運動）を訓練します。読書速度と視覚処理能力の向上に効果的です。',
                 features: [
                     'サッケード精度の向上',
@@ -550,7 +577,7 @@
             findnumber: {
                 name: 'Find Number Training',
                 category: '注意力訓練',
-                icon: '🔢',
+                icon: '8.png',
                 description: '数字探索課題を通じて、選択的注意と視覚探索能力を訓練します。集中力と処理速度の向上に効果的です。',
                 features: [
                     '選択的注意の強化',
@@ -564,7 +591,7 @@
             gonogo: {
                 name: 'Go/No-Go Task',
                 category: '抑制制御',
-                icon: '⚡',
+                icon: '9.png',
                 description: '実行機能と衝動制御を訓練する認知課題です。適切な反応と不適切な反応の抑制を学習し、自己制御能力を向上させます。',
                 features: [
                     '抑制制御の強化',
@@ -583,7 +610,9 @@
             
             modalBody.innerHTML = `
                 <div class="modal-header">
-                    <div class="modal-icon">${app.icon}</div>
+                    <div class="modal-icon">
+                        <img src="${app.icon}" alt="${app.name}">
+                    </div>
                     <div class="modal-title">
                         <h2>${app.name}</h2>
                         <div class="modal-category">${app.category}</div>
