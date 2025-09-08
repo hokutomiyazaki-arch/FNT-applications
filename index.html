@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNT Neuro App Collection | 科学的トレーニングアプリ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #4A3A8C 0%, #2B5B84 50%, #1BA3CC 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(27, 163, 204, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 58, 140, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 58, 140, 0.1), rgba(27, 163, 204, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-card:hover::before {
+            opacity: 1;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-category {
+            font-size: 0.8rem;
+            color: #999;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 20px;
+        }
+
+        .modal-title {
+            flex: 1;
+        }
+
+        .modal-title h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .modal-category {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .modal-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .modal-features {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .modal-features h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-features li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-features li::before {
+            content: '✓';
+            color: #1BA3CC;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(27, 163, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #e0e0e0;
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .apps-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 20px;
+            }
+            
+            .app-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="FNT512-transparent.png" alt="FNT Logo" class="logo" onerror="this.src='FNT512.png'">
+            </div>
+            <h1>FNT Neuro App Collection</h1>
+            <p class="subtitle">科学的に証明されたトレーニングアプリで、神経機能・運動機能の改善をサポート</p>
+        </header>
+
+        <div class="apps-grid">
+            <div class="app-card" onclick="openModal('nback')">
+                <div class="app-icon">🧠</div>
+                <div class="app-name">N-Back 40Hz</div>
+                <div class="app-category">認知トレーニング</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('rhythm')">
+                <div class="app-icon">🎵</div>
+                <div class="app-name">Rhythm Fighter</div>
+                <div class="app-category">リズムゲーム</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('wisconsin')">
+                <div class="app-icon">🃏</div>
+                <div class="app-name">Wisconsin Card</div>
+                <div class="app-category">認知柔軟性</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('tone')">
+                <div class="app-icon">🔊</div>
+                <div class="app-name">Tone Generator</div>
+                <div class="app-category">音響療法</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('okn')">
+                <div class="app-icon">👁️</div>
+                <div class="app-name">OKN Training</div>
+                <div class="app-category">視覚訓練</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('mirror')">
+                <div class="app-icon">🪞</div>
+                <div class="app-name">Mirror Box</div>
+                <div class="app-category">運動療法</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('saccade')">
+                <div class="app-icon">👀</div>
+                <div class="app-name">Random Saccade</div>
+                <div class="app-category">眼球運動</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('findnumber')">
+                <div class="app-icon">🔢</div>
+                <div class="app-name">Find Number</div>
+                <div class="app-category">注意力訓練</div>
+            </div>
+
+            <div class="app-card" onclick="openModal('gonogo')">
+                <div class="app-icon">⚡</div>
+                <div class="app-name">Go/No-Go Task</div>
+                <div class="app-category">抑制制御</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const apps = {
+            nback: {
+                name: 'N-Back 40Hz Gamma Wave',
+                category: '認知トレーニング',
+                icon: '🧠',
+                description: 'N-Back課題と40Hzガンマ波刺激を組み合わせた革新的な認知トレーニングアプリです。ワーキングメモリの向上と、脳の神経同期を促進します。',
+                features: [
+                    '科学的根拠に基づいた N-Back 課題',
+                    '40Hz ガンマ波による脳波同調',
+                    '難易度自動調整機能',
+                    'パフォーマンス追跡とフィードバック',
+                    '集中力とワーキングメモリの改善'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/n-back-40hz-gamma-wave/'
+            },
+            rhythm: {
+                name: 'Rhythm Fighter',
+                category: 'リズムゲーム',
+                icon: '🎵',
+                description: 'リズムと反射神経を鍛える革新的なトレーニングゲームです。音楽に合わせて正確なタイミングで反応することで、運動協調性と認知機能を向上させます。',
+                features: [
+                    'リズム感覚の向上',
+                    '反射神経トレーニング',
+                    '手眼協調の改善',
+                    '段階的な難易度設定',
+                    'エンターテインメント性の高い設計'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/rythm-fighter/'
+            },
+            wisconsin: {
+                name: 'Wisconsin Card Sorting Task',
+                category: '認知柔軟性',
+                icon: '🃏',
+                description: '認知柔軟性と実行機能を評価・訓練する神経心理学的検査をゲーム化したアプリです。ルールの変化に適応する能力を向上させます。',
+                features: [
+                    '認知柔軟性の評価と訓練',
+                    'セット切り替え能力の向上',
+                    '前頭前皮質機能の活性化',
+                    '詳細なパフォーマンス分析',
+                    '臨床的に検証された課題'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/Wisconsin-Card-Sorting-Task-Game/'
+            },
+            tone: {
+                name: 'Tone Generator',
+                category: '音響療法',
+                icon: '🔊',
+                description: '治療用の音波を生成する専門的なツールです。特定の周波数の音を使用して、聴覚刺激療法や音響治療をサポートします。',
+                features: [
+                    '精密な周波数制御',
+                    '複数の波形選択',
+                    'バイノーラルビート生成',
+                    '音量とバランス調整',
+                    '治療プロトコル対応'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/tone-generator/'
+            },
+            okn: {
+                name: 'OKN Training',
+                category: '視覚訓練',
+                icon: '👁️',
+                description: '視運動性眼振（OKN）を利用した視覚トレーニングアプリです。眼球運動の協調性と視覚追跡能力を改善します。',
+                features: [
+                    '視運動性眼振の誘発',
+                    '眼球運動の協調性向上',
+                    '視覚追跡能力の改善',
+                    '速度と方向のカスタマイズ',
+                    'めまいリハビリテーション対応'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/OKN/'
+            },
+            mirror: {
+                name: 'Mirror Box Therapy',
+                category: '運動療法',
+                icon: '🪞',
+                description: 'ミラーセラピーの原理を応用したデジタル治療ツールです。運動機能の回復と幻肢痛の緩和をサポートします。',
+                features: [
+                    '仮想ミラーボックス機能',
+                    '運動イメージの強化',
+                    '神経可塑性の促進',
+                    '片麻痺リハビリテーション',
+                    '慢性疼痛管理サポート'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/mirror-box/'
+            },
+            saccade: {
+                name: 'Random Saccade Training',
+                category: '眼球運動',
+                icon: '👀',
+                description: 'ランダムな視標を追跡することで、サッケード（跳躍性眼球運動）を訓練します。読書速度と視覚処理能力の向上に効果的です。',
+                features: [
+                    'サッケード精度の向上',
+                    '視覚的注意の改善',
+                    '読書速度の向上',
+                    'ランダムパターン生成',
+                    '難易度段階調整'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/randum-saccade/'
+            },
+            findnumber: {
+                name: 'Find Number Training',
+                category: '注意力訓練',
+                icon: '🔢',
+                description: '数字探索課題を通じて、選択的注意と視覚探索能力を訓練します。集中力と処理速度の向上に効果的です。',
+                features: [
+                    '選択的注意の強化',
+                    '視覚探索能力の向上',
+                    '処理速度の改善',
+                    'タイムトライアルモード',
+                    '段階的難易度設定'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/find-number/'
+            },
+            gonogo: {
+                name: 'Go/No-Go Task',
+                category: '抑制制御',
+                icon: '⚡',
+                description: '実行機能と衝動制御を訓練する認知課題です。適切な反応と不適切な反応の抑制を学習し、自己制御能力を向上させます。',
+                features: [
+                    '抑制制御の強化',
+                    '衝動性の管理',
+                    '実行機能の改善',
+                    '反応時間の測定',
+                    'エラー率の分析'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/go-no-go/'
+            }
+        };
+
+        function openModal(appId) {
+            const app = apps[appId];
+            const modalBody = document.getElementById('modal-body');
+            
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-icon">${app.icon}</div>
+                    <div class="modal-title">
+                        <h2>${app.name}</h2>
+                        <div class="modal-category">${app.category}</div>
+                    </div>
+                </div>
+                <p class="modal-description">${app.description}</p>
+                <div class="modal-features">
+                    <h3>主な機能</h3>
+                    <ul>
+                        ${app.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" onclick="window.open('${app.url}', '_blank')">
+                        アプリを起動
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeModal()">
+                        閉じる
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // モーダル外側クリックで閉じる
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ESCキーで閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
