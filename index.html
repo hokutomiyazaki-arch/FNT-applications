@@ -19,6 +19,122 @@
             overflow-x: hidden;
         }
 
+        /* パスワード画面のスタイル */
+        #passwordScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4A3A8C 0%, #2B5B84 50%, #1BA3CC 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        #passwordScreen.hidden {
+            display: none;
+        }
+
+        .password-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .password-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            object-fit: contain;
+        }
+
+        .password-title {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .password-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #1BA3CC;
+            box-shadow: 0 0 0 3px rgba(27, 163, 204, 0.1);
+        }
+
+        .password-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .password-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(27, 163, 204, 0.3);
+        }
+
+        .password-error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* メインコンテンツ */
+        #mainContent {
+            display: none;
+        }
+
+        #mainContent.show {
+            display: block;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -383,86 +499,109 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="FNT512-transparent.png" alt="FNT Logo" class="logo" onerror="this.src='FNT512.png'">
+    <!-- パスワード認証画面 -->
+    <div id="passwordScreen">
+        <div class="password-container">
+            <img src="FNT512-transparent.png" alt="FNT Logo" class="password-logo" onerror="this.src='FNT512.png'">
+            <h2 class="password-title">FNT Neuro App Collection</h2>
+            <p class="password-subtitle">アクセスにはパスワードが必要です</p>
+            <input 
+                type="password" 
+                id="passwordInput" 
+                class="password-input" 
+                placeholder="パスワードを入力"
+                autocomplete="off"
+            >
+            <button onclick="checkPassword()" class="password-submit">アクセス</button>
+            <div id="passwordError" class="password-error">
+                パスワードが正しくありません
             </div>
-            <h1>FNT Neuro App Collection</h1>
-            <p class="subtitle">科学的に証明されたトレーニングアプリで、神経機能・運動機能の改善をサポート</p>
-        </header>
+        </div>
+    </div>
 
-        <div class="apps-grid">
-            <div class="app-card" onclick="openModal('nback')">
-                <div class="app-icon">
-                    <img src="1.png" alt="N-Back 40Hz">
+    <!-- メインコンテンツ -->
+    <div id="mainContent">
+        <div class="container">
+            <header>
+                <div class="logo-container">
+                    <img src="FNT512-transparent.png" alt="FNT Logo" class="logo" onerror="this.src='FNT512.png'">
                 </div>
-                <div class="app-name">N-Back 40Hz</div>
-                <div class="app-category">認知トレーニング</div>
-            </div>
+                <h1>FNT Neuro App Collection</h1>
+                <p class="subtitle">科学的に証明されたトレーニングアプリで、神経機能・運動機能の改善をサポート</p>
+            </header>
 
-            <div class="app-card" onclick="openModal('rhythm')">
-                <div class="app-icon">
-                    <img src="2.png" alt="Rhythm Fighter">
+            <div class="apps-grid">
+                <div class="app-card" onclick="openModal('nback')">
+                    <div class="app-icon">
+                        <img src="1.png" alt="N-Back 40Hz">
+                    </div>
+                    <div class="app-name">N-Back 40Hz</div>
+                    <div class="app-category">認知トレーニング</div>
                 </div>
-                <div class="app-name">Rhythm Fighter</div>
-                <div class="app-category">リズムゲーム</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('wisconsin')">
-                <div class="app-icon">
-                    <img src="3.png" alt="Wisconsin Card">
+                <div class="app-card" onclick="openModal('rhythm')">
+                    <div class="app-icon">
+                        <img src="2.png" alt="Rhythm Fighter">
+                    </div>
+                    <div class="app-name">Rhythm Fighter</div>
+                    <div class="app-category">リズムゲーム</div>
                 </div>
-                <div class="app-name">Wisconsin Card</div>
-                <div class="app-category">認知柔軟性</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('tone')">
-                <div class="app-icon">
-                    <img src="4.png" alt="Tone Generator">
+                <div class="app-card" onclick="openModal('wisconsin')">
+                    <div class="app-icon">
+                        <img src="3.png" alt="Wisconsin Card">
+                    </div>
+                    <div class="app-name">Wisconsin Card</div>
+                    <div class="app-category">認知柔軟性</div>
                 </div>
-                <div class="app-name">Tone Generator</div>
-                <div class="app-category">音響療法</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('okn')">
-                <div class="app-icon">
-                    <img src="5.png" alt="OKN Training">
+                <div class="app-card" onclick="openModal('tone')">
+                    <div class="app-icon">
+                        <img src="4.png" alt="Tone Generator">
+                    </div>
+                    <div class="app-name">Tone Generator</div>
+                    <div class="app-category">音響療法</div>
                 </div>
-                <div class="app-name">OKN Training</div>
-                <div class="app-category">視覚訓練</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('mirror')">
-                <div class="app-icon">
-                    <img src="6.png" alt="Mirror Box">
+                <div class="app-card" onclick="openModal('okn')">
+                    <div class="app-icon">
+                        <img src="5.png" alt="OKN Training">
+                    </div>
+                    <div class="app-name">OKN Training</div>
+                    <div class="app-category">視覚訓練</div>
                 </div>
-                <div class="app-name">Mirror Box</div>
-                <div class="app-category">運動療法</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('saccade')">
-                <div class="app-icon">
-                    <img src="7.png" alt="Random Saccade">
+                <div class="app-card" onclick="openModal('mirror')">
+                    <div class="app-icon">
+                        <img src="6.png" alt="Mirror Box">
+                    </div>
+                    <div class="app-name">Mirror Box</div>
+                    <div class="app-category">運動療法</div>
                 </div>
-                <div class="app-name">Random Saccade</div>
-                <div class="app-category">眼球運動</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('findnumber')">
-                <div class="app-icon">
-                    <img src="8.png" alt="Find Number">
+                <div class="app-card" onclick="openModal('saccade')">
+                    <div class="app-icon">
+                        <img src="7.png" alt="Random Saccade">
+                    </div>
+                    <div class="app-name">Random Saccade</div>
+                    <div class="app-category">眼球運動</div>
                 </div>
-                <div class="app-name">Find Number</div>
-                <div class="app-category">注意力訓練</div>
-            </div>
 
-            <div class="app-card" onclick="openModal('gonogo')">
-                <div class="app-icon">
-                    <img src="9.png" alt="Go/No-Go Task">
+                <div class="app-card" onclick="openModal('findnumber')">
+                    <div class="app-icon">
+                        <img src="8.png" alt="Find Number">
+                    </div>
+                    <div class="app-name">Find Number</div>
+                    <div class="app-category">注意力訓練</div>
                 </div>
-                <div class="app-name">Go/No-Go Task</div>
-                <div class="app-category">抑制制御</div>
+
+                <div class="app-card" onclick="openModal('gonogo')">
+                    <div class="app-icon">
+                        <img src="9.png" alt="Go/No-Go Task">
+                    </div>
+                    <div class="app-name">Go/No-Go Task</div>
+                    <div class="app-category">抑制制御</div>
+                </div>
             </div>
         </div>
     </div>
@@ -475,6 +614,51 @@
     </div>
 
     <script>
+        // パスワード認証
+        const CORRECT_PASSWORD = 'fnt0915';
+        
+        // ページ読み込み時にセッションをチェック
+        window.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('fntAuthenticated') === 'true') {
+                showMainContent();
+            }
+            
+            // Enterキーでパスワード送信
+            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+        });
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordError = document.getElementById('passwordError');
+            const enteredPassword = passwordInput.value;
+            
+            if (enteredPassword === CORRECT_PASSWORD) {
+                // 認証成功
+                sessionStorage.setItem('fntAuthenticated', 'true');
+                showMainContent();
+            } else {
+                // 認証失敗
+                passwordError.classList.add('show');
+                passwordInput.value = '';
+                passwordInput.focus();
+                
+                // エラーメッセージを3秒後に非表示
+                setTimeout(() => {
+                    passwordError.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function showMainContent() {
+            document.getElementById('passwordScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('show');
+        }
+
+        // アプリデータ
         const apps = {
             nback: {
                 name: 'N-Back 40Hz Gamma Wave',
