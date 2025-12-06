@@ -536,7 +536,7 @@
                         <img src="1.png" alt="N-Back 40Hz">
                     </div>
                     <div class="app-name">N-Back 40Hz</div>
-                    <div class="app-category">認知トレーニング</div>
+                    <div class="app-category">ワーキングメモリー評価</div>
                 </div>
 
                 <div class="app-card" onclick="openModal('rhythm')">
@@ -568,7 +568,7 @@
                         <img src="5.png" alt="OKN Training">
                     </div>
                     <div class="app-name">OKN Training</div>
-                    <div class="app-category">視覚訓練</div>
+                    <div class="app-category">視運動性眼球反射</div>
                 </div>
 
                 <div class="app-card" onclick="openModal('mirror')">
@@ -592,7 +592,7 @@
                         <img src="8.png" alt="Find Number">
                     </div>
                     <div class="app-name">Find Number</div>
-                    <div class="app-category">注意力訓練</div>
+                    <div class="app-category">視覚背側経路刺激</div>
                 </div>
 
                 <div class="app-card" onclick="openModal('gonogo')">
@@ -616,7 +616,15 @@
                         <img src="11.png" alt="Gabor Patch">
                     </div>
                     <div class="app-name">Gabor Patch</div>
-                    <div class="app-category">視覚機能改善</div>
+                    <div class="app-category">コントラスト感度改善</div>
+                </div>
+
+                <div class="app-card" onclick="openModal('radialflow')">
+                    <div class="app-icon">
+                        <img src="12.png" alt="Radial Optic Flow">
+                    </div>
+                    <div class="app-name">Radial Optic Flow</div>
+                    <div class="app-category">同心円OKN</div>
                 </div>
             </div>
         </div>
@@ -678,7 +686,7 @@
         const apps = {
             nback: {
                 name: 'N-Back 40Hz Gamma Wave',
-                category: '認知トレーニング',
+                category: 'ワーキングメモリー評価',
                 icon: '1.png',
                 description: 'N-Back課題と40Hzガンマ波刺激を組み合わせた革新的な認知トレーニングアプリです。ワーキングメモリの向上と、脳の神経同期を促進します。',
                 features: [
@@ -734,7 +742,7 @@
             },
             okn: {
                 name: 'OKN Training',
-                category: '視覚訓練',
+                category: '視運動性眼球反射',
                 icon: '5.png',
                 description: '視運動性眼振（OKN）を利用した視覚トレーニングアプリです。眼球運動の協調性と視覚追跡能力を改善します。',
                 features: [
@@ -776,7 +784,7 @@
             },
             findnumber: {
                 name: 'Find Number Training',
-                category: '注意力訓練',
+                category: '視覚背側経路刺激',
                 icon: '8.png',
                 description: '数字探索課題を通じて、選択的注意と視覚探索能力を訓練します。集中力と処理速度の向上に効果的です。',
                 features: [
@@ -818,7 +826,7 @@
             },
             gabor: {
                 name: 'Gabor Patch Training',
-                category: '視覚機能改善',
+                category: 'コントラスト感度改善',
                 icon: '11.png',
                 description: 'ガボールパッチを使用した革新的な視覚トレーニングアプリです。視力改善、コントラスト感度の向上、視覚処理能力の強化に科学的に効果が実証されています。',
                 features: [
@@ -829,6 +837,20 @@
                     '個別適応型難易度調整'
                 ],
                 url: 'https://hokutomiyazaki-arch.github.io/gabor-patch/'
+            },
+            radialflow: {
+                name: 'Radial Optic Flow Training',
+                category: '同心円OKN',
+                icon: '12.png',
+                description: '放射状オプティックフローを使用した視覚運動トレーニングアプリです。空間認識能力の向上、動体視力の改善、前庭視覚統合の強化に効果的です。',
+                features: [
+                    '動体視力の向上',
+                    '空間認識能力の強化',
+                    '前庭視覚統合の改善',
+                    '運動酔い耐性の向上',
+                    '視覚運動協調性の促進'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/radial-optic-flow/'
             }
         };
 
