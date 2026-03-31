@@ -637,10 +637,26 @@
 
                 <div class="app-card" onclick="openModal('stroop')">
                     <div class="app-icon">
-                        <img src="14.png" alt="FNT Stroop">
+                        <img src="14.png" alt="Stroop Test">
                     </div>
-                    <div class="app-name">FNT Stroop</div>
-                    <div class="app-category">ストループ課題</div>
+                    <div class="app-name">Stroop Test</div>
+                    <div class="app-category">実行機能評価</div>
+                </div>
+
+                <div class="app-card" onclick="openModal('eyemovement')">
+                    <div class="app-icon">
+                        <img src="15.png" alt="Eye Movement Training">
+                    </div>
+                    <div class="app-name">Eye Movement Training</div>
+                    <div class="app-category">眼球運動制御</div>
+                </div>
+
+                <div class="app-card" onclick="openModal('interoception')">
+                    <div class="app-icon">
+                        <img src="16.png" alt="Interoception Test">
+                    </div>
+                    <div class="app-name">Interoception Test</div>
+                    <div class="app-category">内受容覚評価</div>
                 </div>
             </div>
         </div>
@@ -883,19 +899,46 @@
                 url: 'https://hokutomiyazaki-arch.github.io/metrnome/'
             },
             stroop: {
-                name: 'FNT Stroop Task',
-                category: 'ストループ課題',
+                name: 'Stroop Test',
+                category: '実行機能評価',
                 icon: '14.png',
-                description: '前頭前野を活性化する認知トレーニングアプリです。色-文字・数値サイズ・方向・空間位置・カウント・感情・情動の7種類のストループ課題と、アファメーション・身体感覚の2種類の認知リフレーミングモードを搭載。認知制御能力・抑制機能・情動調整能力を総合的にトレーニングします。',
+                description: 'ストループ効果を利用した認知制御機能の評価・訓練アプリです。選択的注意、抑制機能、認知的柔軟性の向上に効果的です。',
                 features: [
-                    '9種類のモード（ストループ7種＋リフレーミング2種）',
-                    '前帯状皮質・背外側前頭前野の活性化',
-                    '情動ストループによる感情処理トレーニング',
-                    '認知リフレーミングによる思考パターン改善',
-                    'ストループ効果・反応時間の詳細分析',
-                    'PWA対応でオフライン使用可能'
+                    '色-語干渉課題による認知制御評価',
+                    '選択的注意機能の強化',
+                    '抑制機能の改善',
+                    '反応時間と正確性の測定',
+                    '前頭前皮質機能の活性化'
                 ],
                 url: 'https://hokutomiyazaki-arch.github.io/stroop/'
+            },
+            eyemovement: {
+                name: 'Eye Movement Training',
+                category: '眼球運動制御',
+                icon: '15.png',
+                description: '包括的な眼球運動トレーニングアプリです。追従性眼球運動、固視機能、視覚-運動協調性の向上を通じて、視覚系の総合的な機能改善を図ります。',
+                features: [
+                    '追従性眼球運動の強化',
+                    '固視安定性の向上',
+                    '視覚-運動協調性の改善',
+                    '多方向眼球運動トレーニング',
+                    '段階的難易度プログラム'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/eye-movement-training/'
+            },
+            interoception: {
+                name: 'Interoception Test',
+                category: '内受容覚評価',
+                icon: '16.png',
+                description: '内受容覚（体内感覚）の評価・訓練アプリです。心拍知覚、呼吸感覚、身体感覚の認識能力を評価し、マインドフルネスと身体意識の向上を促進します。',
+                features: [
+                    'MAIAテスト',
+                    '心拍知覚課題',
+                    '内受容覚タイプ分析',
+                    'マインドフルネス促進',
+                    '自律神経機能との関連評価'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/interoception/'
             }
         };
 
