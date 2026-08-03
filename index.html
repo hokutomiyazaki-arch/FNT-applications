@@ -658,6 +658,14 @@
                     <div class="app-name">Interoception Test</div>
                     <div class="app-category">内受容覚評価</div>
                 </div>
+
+                <div class="app-card" onclick="openModal('randomtarget')">
+                    <div class="app-icon">
+                        <img src="17.png" alt="Random Target">
+                    </div>
+                    <div class="app-name">Random Target</div>
+                    <div class="app-category">視標ランダム提示</div>
+                </div>
             </div>
         </div>
     </div>
@@ -939,6 +947,20 @@
                     '自律神経機能との関連評価'
                 ],
                 url: 'https://hokutomiyazaki-arch.github.io/interoception/'
+            },
+            randomtarget: {
+                name: 'Random Target',
+                category: '視標ランダム提示',
+                icon: '17.png',
+                description: 'VORトレーニングやインフィニティウォーク中に使う、ランダムターゲット表示ツールです。数字・文字・単語・矢印・回転ボールをテンポに合わせて提示し、視覚と前庭のはたらきを同時に使う課題づくりをサポートします。',
+                features: [
+                    '数字・文字・単語・矢印・回転ボールの5種類の視標',
+                    'テンポ・サイズ・色・数字範囲のカスタマイズ',
+                    'ストループ計算課題モード',
+                    '設定の自動保存（次回起動時に復元）',
+                    'PWA対応（ホーム画面に追加してオフライン利用可）'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/fnt-tools/'
             }
         };
 
