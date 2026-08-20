@@ -773,7 +773,7 @@
             </div>
 
             <h2 class="section-title">クライアントへの渡し方</h2>
-            <p class="section-note">アプリは公式LINEのキーワードで配っています。<strong>この画面を見せて読み取ってもらうのが一番速いです</strong>（URLを打ってもらう必要はありません）。</p>
+            <p class="section-note">アプリは公式LINEのキーワードで配っています。<strong>この画面を見せて読み取ってもらうのが一番速いです</strong>（URLを打ってもらう必要はありません）。<br><strong>※このページはコミュニティ会員だけの特典です。ページのURLとパスワードは外に出さないでください。</strong></p>
             <div class="share-card">
                 <div class="share-qr">
                     <img src="line-qr.png" alt="BDCオンラインスクール公式LINEのQRコード">
@@ -785,9 +785,8 @@
                     <div class="share-buttons">
                         <button class="share-btn" onclick="copyLine(this)">LINEのURLをコピー</button>
                         <button class="share-btn share-btn-sub" onclick="shareLine(this)">LINEを共有</button>
-                        <button class="share-btn share-btn-sub" onclick="sharePage(this)">このページを共有</button>
                     </div>
-                    <p class="share-note">※このページはパスワードで保護されています。ページを共有するときは、<strong>パスワードは同じメッセージに書かず、別に伝えてください</strong>。</p>
+                    <p class="share-note">※配るのは<strong>公式LINEだけ</strong>です。<strong>このページ自体は会員特典なので、URLとパスワードを会員以外に渡さないでください。</strong>クライアントには「公式LINEで◯◯と送ってください」とだけ伝えれば、アプリは渡せます。</p>
                 </div>
             </div>
         </div>
@@ -837,15 +836,6 @@
                 catch (e) { if (e && e.name === 'AbortError') return; }
             }
             copyText(LINE_URL, btn, 'コピーしました');
-        }
-
-        async function sharePage(btn) {
-            const url = location.href.split('#')[0];
-            if (navigator.share) {
-                try { await navigator.share({ title: 'FNT Neuro App Collection', url: url }); return; }
-                catch (e) { if (e && e.name === 'AbortError') return; }
-            }
-            copyText(url, btn, 'URLをコピーしました');
         }
 
         // パスワード認証
