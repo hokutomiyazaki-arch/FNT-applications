@@ -352,6 +352,16 @@
             }
         }
 
+        .modal-banner {
+            width: 100%; display: block; border-radius: 14px; margin-bottom: 22px;
+            aspect-ratio: 1200 / 420; object-fit: cover; background: rgba(255,255,255,.06);
+        }
+        .handoff {
+            margin: 18px 0 4px; padding: 14px 16px; border-radius: 12px;
+            background: linear-gradient(135deg, rgba(74,58,140,.12), rgba(27,163,204,.12));
+            border: 1px solid rgba(242,217,160,.45); line-height: 1.8; font-size: 14px;
+        }
+        .handoff b { font-size: 15px; }
         .modal-header {
             display: flex;
             align-items: center;
@@ -679,7 +689,7 @@
             </div>
 
             <h2 class="section-title">YouTubeで配っているアプリ</h2>
-            <p class="section-note">動画の視聴者に、公式LINEのキーワードで配布しているLite PWAです。（ ）内が配布ワード。クライアントに渡す前提で、手順の音声ガイドと安全の注意が入っています。</p>
+            <p class="section-note">動画の視聴者に、公式LINEのキーワードで配布しているLite PWAです。（ ）内が配布ワード。<strong>クライアントには「公式LINEで◯◯と送ってください」と伝えるだけで、簡単にお渡しできます</strong>（URLを教える必要はありません）。手順の音声ガイドと安全の注意が入っています。</p>
             <div class="apps-grid">
                 <div class="app-card" onclick="openModal('mimitone')">
                     <div class="app-icon">
@@ -768,10 +778,11 @@
         // アプリデータ
         const apps = {
             kokyu: {
+                word: 'こきゅう',
                 name: '呼吸のスイッチ',
                 category: '呼吸・自律神経',
                 icon: '19.png',
-                description: '息を吐き切る秒数を計って、深い呼吸のスイッチを入れる相棒アプリです。　【配布ワード】公式LINEで「こきゅう」と送ると届きます。',
+                description: '息を吐き切る秒数を計って、深い呼吸のスイッチを入れる相棒アプリです。',
                 features: [
                     '吐き切りの秒数を計測',
                     '前後の主観を記録',
@@ -780,10 +791,11 @@
                 url: 'https://hokutomiyazaki-arch.github.io/kokyu-lite-pwa/'
             },
             pinto8: {
+                word: 'ろうがん',
                 name: 'ピント8',
                 category: '眼の調節・老眼',
                 icon: '20.png',
-                description: '8方向のアルファベットで、眼のピント（調節）と眼球運動を鍛えるコンディショニングです。　【配布ワード】公式LINEで「ろうがん」と送ると届きます。',
+                description: '8方向のアルファベットで、眼のピント（調節）と眼球運動を鍛えるコンディショニングです。',
                 features: [
                     '8方向に置いた文字を読む',
                     '近く→遠くのピント切り替えを反復',
@@ -792,10 +804,11 @@
                 url: 'https://hokutomiyazaki-arch.github.io/pinto-8/'
             },
             shiya: {
+                word: 'しや',
                 name: '頭頂葉トレーナー',
                 category: '周辺視野・空間認識',
                 icon: '21.png',
-                description: '正面の目印を見つめたまま、視界のはし（周辺視野）で数字を読む空間認識トレーニングです。　【配布ワード】公式LINEで「しや」と送ると届きます。',
+                description: '正面の目印を見つめたまま、視界のはし（周辺視野）で数字を読む空間認識トレーニングです。',
                 features: [
                     '中心を固視したまま周辺視野で数字を読む',
                     '頭頂葉・背側視覚経路をねらう',
@@ -804,6 +817,7 @@
                 url: 'https://hokutomiyazaki-arch.github.io/shiya/'
             },
             mimitone: {
+                word: 'みみ',
                 name: 'みみトーン',
                 category: '耳鳴り・聴覚',
                 icon: '18.png',
@@ -1061,7 +1075,16 @@
             const app = apps[appId];
             const modalBody = document.getElementById('modal-body');
             
+            const handoff = app.word ? `
+                <div class="handoff">
+                    <b>クライアントへの渡し方</b><br>
+                    「公式LINEで <b>「${app.word}」</b> と送ってください」と伝えるだけで渡せます。URLを教える必要はありません。
+                </div>` : '';
+
+            const banner = app.word ? `<img class="modal-banner" src="banners/${appId}.svg" alt="${app.name}">` : '';
+
             modalBody.innerHTML = `
+                ${banner}
                 <div class="modal-header">
                     <div class="modal-icon">
                         <img src="${app.icon}" alt="${app.name}">
@@ -1072,6 +1095,7 @@
                     </div>
                 </div>
                 <p class="modal-description">${app.description}</p>
+                ${handoff}
                 <div class="modal-features">
                     <h3>主な機能</h3>
                     <ul>
