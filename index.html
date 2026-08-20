@@ -413,6 +413,9 @@
             border: 1px solid rgba(242,217,160,.45); line-height: 1.8; font-size: 14px;
         }
         .handoff b { font-size: 15px; }
+        .handoff a { color: #1BA3CC; font-weight: 600; }
+        .share-url a { color: inherit; text-decoration: none; }
+        .share-url a:hover { text-decoration: underline; }
         .modal-header {
             display: flex;
             align-items: center;
@@ -772,6 +775,23 @@
                 </div>
             </div>
 
+            <h2 class="section-title">クライアントへの渡し方</h2>
+            <p class="section-note">アプリは<strong>公式LINEのキーワード</strong>で配っています。クライアントには「公式LINEで◯◯と送ってください」と伝えるだけ。<strong>その公式LINEがこれです</strong>↓（この画面のQRを読み取ってもらうのが一番速い）。<br><strong>※このページ自体はコミュニティ会員だけの特典です。ページのURLとパスワードは外に出さないでください。</strong></p>
+            <div class="share-card">
+                <div class="share-qr">
+                    <img src="line-qr.png" alt="Functional Neuro Training 公式LINE の友だち追加QRコード">
+                    <p class="share-qr-label">Functional Neuro Training 公式LINE<br>@583penki</p>
+                </div>
+                <div class="share-body">
+                    <p class="share-lead"><strong>①</strong> カメラでQRを読み取って友だち追加 → <strong>②</strong> 上のカードにある<strong>配布ワード</strong>（「みみ」など）を送る → <strong>③</strong> アプリがすぐ届きます。</p>
+                    <p class="share-url"><a href="https://lin.ee/pXqata2" target="_blank" rel="noopener">https://lin.ee/pXqata2</a></p>
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="copyLine(this)">公式LINEのURLをコピー</button>
+                        <button class="share-btn share-btn-sub" onclick="shareLine(this)">公式LINEを共有</button>
+                    </div>
+                    <p class="share-note">※動画の概要欄では「BDCオンラインスクール公式LINE」という表記で出していますが、<strong>アカウントは同じ</strong>です（@583penki）。配布ワードもこのアカウントで動いています。</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -784,7 +804,19 @@
 
     <script>
 
-        // 配り方・シェア：FNT公式LINEのURL確定待ちで一旦取り下げ（2026-08-20）
+        // 配り方（2026-08-20）：公式LINE＝@583penki（＝FNTの公式LINE。概要欄ではBDC名で表記しているが同一アカウント）
+        // ★このページ自体を共有する導線は作らない（会員特典・パスワード制）
+        const LINE_URL = 'https://lin.ee/pXqata2';
+
+        function copyLine(btn) { copyText(LINE_URL, btn, 'コピーしました'); }
+
+        async function shareLine(btn) {
+            if (navigator.share) {
+                try { await navigator.share({ title: 'Functional Neuro Training 公式LINE', url: LINE_URL }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            copyText(LINE_URL, btn, 'コピーしました');
+        }
 
         function flashBtn(btn, msg) {
             const original = btn.textContent;
@@ -1157,7 +1189,8 @@
             const handoff = app.word ? `
                 <div class="handoff">
                     <b>クライアントへの渡し方</b><br>
-                    「公式LINEで <b>「${app.word}」</b> と送ってください」と伝えるだけで渡せます。URLを教える必要はありません。
+                    「公式LINEで <b>「${app.word}」</b> と送ってください」と伝えるだけで渡せます。アプリのURLを教える必要はありません。<br>
+                    公式LINE＝<a href="https://lin.ee/pXqata2" target="_blank" rel="noopener">Functional Neuro Training 公式LINE（@583penki）</a>　※友だち追加のQRはページ下の「クライアントへの渡し方」にあります
                 </div>` : '';
 
             const banner = app.word ? `<img class="modal-banner" src="banners/${appId}.svg" alt="${app.name}">` : '';
