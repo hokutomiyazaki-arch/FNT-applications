@@ -215,6 +215,14 @@
             margin: 0 auto;
         }
 
+        .section-title {
+            font-size: 20px; font-weight: 700; margin: 34px 0 6px; letter-spacing: .02em;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-title::before { content: ""; width: 4px; height: 22px; border-radius: 2px; background: currentColor; opacity: .55; }
+        .section-note { font-size: 13px; opacity: .7; margin: 0 0 14px; line-height: 1.7; }
+        .app-word { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
+            border: 1px solid currentColor; font-size: 11px; opacity: .85; }
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -530,6 +538,8 @@
                 <p class="subtitle">科学的に証明されたトレーニングアプリで、神経機能・運動機能の改善をサポート</p>
             </header>
 
+                        <h2 class="section-title">評価・トレーニングアプリ</h2>
+            <p class="section-note">現場で使う評価・トレーニング用のアプリです。</p>
             <div class="apps-grid">
                 <div class="app-card" onclick="openModal('nback')">
                     <div class="app-icon">
@@ -667,12 +677,143 @@
                     <div class="app-category">視標ランダム提示</div>
                 </div>
 
+                <div class="app-card" onclick="openModal('kokyuswitch')">
+                    <div class="app-icon">
+                        <img src="22.png" alt="呼吸のスイッチ（別版）">
+                    </div>
+                    <div class="app-name">呼吸のスイッチ（別版）</div>
+                    <div class="app-category">呼吸</div>
+                </div>
+                <div class="app-card" onclick="openModal('jushin')">
+                    <div class="app-icon">
+                        <img src="23.png" alt="重心リセット 30秒">
+                    </div>
+                    <div class="app-name">重心リセット 30秒</div>
+                    <div class="app-category">重心・姿勢</div>
+                </div>
+                <div class="app-card" onclick="openModal('saccadesimple')">
+                    <div class="app-icon">
+                        <img src="24.png" alt="シンプルサッカード">
+                    </div>
+                    <div class="app-name">シンプルサッカード</div>
+                    <div class="app-category">眼球運動</div>
+                </div>
+                <div class="app-card" onclick="openModal('interoceptiontest')">
+                    <div class="app-icon">
+                        <img src="25.png" alt="内受容覚 包括的テスト">
+                    </div>
+                    <div class="app-name">内受容覚 包括的テスト</div>
+                    <div class="app-category">内受容覚評価</div>
+                </div>
+                <div class="app-card" onclick="openModal('vision')">
+                    <div class="app-icon">
+                        <img src="26.png" alt="Vision Training 視力トレーニング">
+                    </div>
+                    <div class="app-name">Vision Training 視力トレーニング</div>
+                    <div class="app-category">視力</div>
+                </div>
+                <div class="app-card" onclick="openModal('heartrate')">
+                    <div class="app-icon">
+                        <img src="27.png" alt="心拍感知テスト">
+                    </div>
+                    <div class="app-name">心拍感知テスト</div>
+                    <div class="app-category">内受容覚評価</div>
+                </div>
+                <div class="app-card" onclick="openModal('maiaapp')">
+                    <div class="app-icon">
+                        <img src="28.png" alt="MAIA 内受容覚アセスメント">
+                    </div>
+                    <div class="app-name">MAIA 内受容覚アセスメント</div>
+                    <div class="app-category">内受容覚評価</div>
+                </div>
+                <div class="app-card" onclick="openModal('neurotype')">
+                    <div class="app-icon">
+                        <img src="29.png" alt="神経タイプ診断">
+                    </div>
+                    <div class="app-name">神経タイプ診断</div>
+                    <div class="app-category">神経タイプ評価</div>
+                </div>
+                <div class="app-card" onclick="openModal('pupil')">
+                    <div class="app-icon">
+                        <img src="30.png" alt="瞳孔評価">
+                    </div>
+                    <div class="app-name">瞳孔評価</div>
+                    <div class="app-category">動眼神経評価</div>
+                </div>
+                <div class="app-card" onclick="openModal('neurocard')">
+                    <div class="app-icon">
+                        <img src="31.png" alt="FNT Neuro Card">
+                    </div>
+                    <div class="app-name">FNT Neuro Card</div>
+                    <div class="app-category">トークテーマ</div>
+                </div>
+                <div class="app-card" onclick="openModal('oknsimple')">
+                    <div class="app-icon">
+                        <img src="32.png" alt="OKN Strip">
+                    </div>
+                    <div class="app-name">OKN Strip</div>
+                    <div class="app-category">視運動性眼振</div>
+                </div>
+                <div class="app-card" onclick="openModal('seniorsupport')">
+                    <div class="app-icon">
+                        <img src="33.png" alt="シニア向け認知機能サポート">
+                    </div>
+                    <div class="app-name">シニア向け認知機能サポート</div>
+                    <div class="app-category">認知機能</div>
+                </div>
+                <div class="app-card" onclick="openModal('magicaleye')">
+                    <div class="app-icon">
+                        <img src="34.png" alt="マジカルアイ ジェネレーター">
+                    </div>
+                    <div class="app-name">マジカルアイ ジェネレーター</div>
+                    <div class="app-category">立体視</div>
+                </div>
+                <div class="app-card" onclick="openModal('tokn')">
+                    <div class="app-icon">
+                        <img src="35.png" alt="回転模様アプリ">
+                    </div>
+                    <div class="app-name">回転模様アプリ</div>
+                    <div class="app-category">視運動刺激</div>
+                </div>
+                <div class="app-card" onclick="openModal('kinoko')">
+                    <div class="app-icon">
+                        <img src="36.png" alt="キノコ決闘団">
+                    </div>
+                    <div class="app-name">キノコ決闘団</div>
+                    <div class="app-category">対戦ゲーム</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">YouTubeで配っているアプリ</h2>
+            <p class="section-note">動画の視聴者に、公式LINEのキーワードで配布しているLite PWAです。（ ）内が配布ワード。クライアントに渡す前提で、手順の音声ガイドと安全の注意が入っています。</p>
+            <div class="apps-grid">
                 <div class="app-card" onclick="openModal('mimitone')">
                     <div class="app-icon">
                         <img src="18.png" alt="みみトーン">
                     </div>
                     <div class="app-name">みみトーン</div>
-                    <div class="app-category">耳鳴り・聴覚</div>
+                    <div class="app-category">耳鳴り・聴覚<span class="app-word">LINE「みみ」</span></div>
+                </div>
+                <div class="app-card" onclick="openModal('kokyu')">
+                    <div class="app-icon">
+                        <img src="19.png" alt="呼吸のスイッチ">
+                    </div>
+                    <div class="app-name">呼吸のスイッチ</div>
+                    <div class="app-category">呼吸・自律神経<span class="app-word">LINE「こきゅう」</span></div>
+                </div>
+                <div class="app-card" onclick="openModal('pinto8')">
+                    <div class="app-icon">
+                        <img src="20.png" alt="ピント8">
+                    </div>
+                    <div class="app-name">ピント8</div>
+                    <div class="app-category">眼の調節・老眼<span class="app-word">LINE「ろうがん」</span></div>
+                </div>
+                <div class="app-card" onclick="openModal('shiya')">
+                    <div class="app-icon">
+                        <img src="21.png" alt="頭頂葉トレーナー">
+                    </div>
+                    <div class="app-name">頭頂葉トレーナー</div>
+                    <div class="app-category">周辺視野・空間認識<span class="app-word">LINE「しや」</span></div>
                 </div>
             </div>
         </div>
@@ -732,6 +873,207 @@
 
         // アプリデータ
         const apps = {
+            kokyu: {
+                name: '呼吸のスイッチ',
+                category: '呼吸・自律神経',
+                icon: '19.png',
+                description: '息を吐き切る秒数を計って、深い呼吸のスイッチを入れる相棒アプリです。　【配布ワード】公式LINEで「こきゅう」と送ると届きます。',
+                features: [
+                    '吐き切りの秒数を計測',
+                    '前後の主観を記録',
+                    '音声ガイドで手順を全誘導'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/kokyu-lite-pwa/'
+            },
+            pinto8: {
+                name: 'ピント8',
+                category: '眼の調節・老眼',
+                icon: '20.png',
+                description: '8方向のアルファベットで、眼のピント（調節）と眼球運動を鍛えるコンディショニングです。　【配布ワード】公式LINEで「ろうがん」と送ると届きます。',
+                features: [
+                    '8方向に置いた文字を読む',
+                    '近く→遠くのピント切り替えを反復',
+                    '片眼ずつ実施できる'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/pinto-8/'
+            },
+            shiya: {
+                name: '頭頂葉トレーナー',
+                category: '周辺視野・空間認識',
+                icon: '21.png',
+                description: '正面の目印を見つめたまま、視界のはし（周辺視野）で数字を読む空間認識トレーニングです。　【配布ワード】公式LINEで「しや」と送ると届きます。',
+                features: [
+                    '中心を固視したまま周辺視野で数字を読む',
+                    '頭頂葉・背側視覚経路をねらう',
+                    '難易度を段階的に調整'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/shiya/'
+            },
+            kokyuswitch: {
+                name: '呼吸のスイッチ（別版）',
+                category: '呼吸',
+                icon: '22.png',
+                description: '息を吐き切る秒数を計って、深い呼吸のスイッチを入れる相棒アプリ。※LINE配布版と内容が重複している可能性があります（要確認）。',
+                features: [
+                    '吐き切りの秒数を計測',
+                    'FNT標準のLite PWA'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/kokyu-switch/'
+            },
+            jushin: {
+                name: '重心リセット 30秒',
+                category: '重心・姿勢',
+                icon: '23.png',
+                description: '足裏3点で重心を整える30秒ワークの相棒アプリです。隠れ反り腰・下腹まわり向け。',
+                features: [
+                    '足裏3点で重心を整える',
+                    '30秒で完了'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/jushin-reset/'
+            },
+            saccadesimple: {
+                name: 'シンプルサッカード',
+                category: '眼球運動',
+                icon: '24.png',
+                description: '毎日3分のサッカード（衝動性眼球運動）トレーニングです。',
+                features: [
+                    '横・縦・斜めの方向を選べる',
+                    '毎日続けられる短時間設計'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/saccade-simple/'
+            },
+            interoceptiontest: {
+                name: '内受容覚 包括的テスト',
+                category: '内受容覚評価',
+                icon: '25.png',
+                description: '内受容覚（体の内側の感覚）を包括的に評価するテストです。テストモードを備えています。',
+                features: [
+                    '内受容覚の包括的評価',
+                    '実施者／被験者のロールに対応'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/interoception-test/'
+            },
+            vision: {
+                name: 'Vision Training 視力トレーニング',
+                category: '視力',
+                icon: '26.png',
+                description: '視力（解像度）のトレーニングアプリです。',
+                features: [
+                    '視標を使った視力トレーニング',
+                    '使い方の解説つき'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/visiual-resolution-training/'
+            },
+            heartrate: {
+                name: '心拍感知テスト',
+                category: '内受容覚評価',
+                icon: '27.png',
+                description: '自分の心拍をどれだけ正確に感じ取れるかを測る、内受容感覚（Interoceptive Awareness）のテストです。',
+                features: [
+                    '心拍の自己感知精度を測定',
+                    '内受容覚アセスメントと併用できる'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/heart-rate-count/'
+            },
+            maiaapp: {
+                name: 'MAIA 内受容覚アセスメント',
+                category: '内受容覚評価',
+                icon: '28.png',
+                description: 'MAIA（多次元内受容覚アウェアネス尺度）による内受容覚の評価アプリです。',
+                features: [
+                    'MAIAに基づく多次元評価',
+                    '心拍感知テストと組み合わせて使える'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/maia/'
+            },
+            neurotype: {
+                name: '神経タイプ診断',
+                category: '神経タイプ評価',
+                icon: '29.png',
+                description: '自分の神経タイプを分析するFNTアプリです。',
+                features: [
+                    '神経タイプの分類',
+                    '結果に応じた方向づけ'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/neuro-type-assessment/'
+            },
+            pupil: {
+                name: '瞳孔評価',
+                category: '動眼神経評価',
+                icon: '30.png',
+                description: '瞳孔サイズの測定による動眼神経の評価アプリです。',
+                features: [
+                    '瞳孔サイズを測定',
+                    '動眼神経の左右差を見る'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/pupil-size/'
+            },
+            neurocard: {
+                name: 'FNT Neuro Card',
+                category: 'トークテーマ',
+                icon: '31.png',
+                description: 'トークテーマ・ルーレットです。',
+                features: [
+                    'ランダムにテーマを提示',
+                    'セミナー・体験会で使える'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/talk-thme/'
+            },
+            oknsimple: {
+                name: 'OKN Strip',
+                category: '視運動性眼振',
+                icon: '32.png',
+                description: '視運動性眼振（OKN）のトレーニング用ストリップです。',
+                features: [
+                    '縞模様の流れでOKNを誘発',
+                    'シンプルな操作'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/OKN-Simple/'
+            },
+            seniorsupport: {
+                name: 'シニア向け認知機能サポート',
+                category: '認知機能',
+                icon: '33.png',
+                description: '家族のためのシニア向け認知機能サポートのページです。',
+                features: [
+                    'シニアと家族向け',
+                    '無料プレゼントの導線あり'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/brain-cognition-support/'
+            },
+            magicaleye: {
+                name: 'マジカルアイ ジェネレーター',
+                category: '立体視',
+                icon: '34.png',
+                description: 'ステレオグラム（マジカルアイ）を生成します。円・四角・三角・星・ハート・ひらがななど、表示する形状と奥行きを選べます。',
+                features: [
+                    '形状と奥行きを指定して生成',
+                    '立体視のトレーニングに'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/stereogram/'
+            },
+            tokn: {
+                name: '回転模様アプリ',
+                category: '視運動刺激',
+                icon: '35.png',
+                description: '回転する模様を表示します。らせん・花びら・幾何学・波紋・曼荼羅・星座・縞模様などから選べます。',
+                features: [
+                    '模様の種類を切り替えられる',
+                    '回転による視運動刺激'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/tOKN/'
+            },
+            kinoko: {
+                name: 'キノコ決闘団',
+                category: '対戦ゲーム',
+                icon: '36.png',
+                description: 'きのこの剣士たちが胞子紋の闘技場で斬り合う、間合いと読み合いの対戦ゲームです。',
+                features: [
+                    '間合いと読み合いの対戦',
+                    '息抜き・アイスブレイク用'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/kinoko-blade/'
+            },
             mimitone: {
                 name: 'みみトーン',
                 category: '耳鳴り・聴覚',
