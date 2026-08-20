@@ -207,15 +207,16 @@
 
         h1 {
             font-size: 2.5rem;
-            /* 以前は紫→シアンのグラデ文字だったが、地色が同じ紫→シアンなので文字が沈んで読めなかった（2026-08-20修正） */
-            color: #ffffff;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
             font-weight: 800;
         }
 
         .subtitle {
-            color: rgba(255, 255, 255, 0.92);
+            color: #666;
             font-size: 1.1rem;
             line-height: 1.6;
             max-width: 600px;
@@ -232,7 +233,9 @@
         .app-word { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
             border: 1px solid currentColor; font-size: 11px; opacity: .85; }
         /* 白いカード・モーダル・認証カードの中は濃い文字。body の白が漏れないよう明示する */
-        .app-card, .modal-content, .password-container { color: #333333; }
+        /* 白いカードの中は濃い文字。body の白が漏れないよう明示する。
+           ★白にするのは"グラデ地の上に直接乗っている文字"だけ（section-title / section-note） */
+        header, .app-card, .modal-content, .password-container, .share-card { color: #333333; }
 
         /* 配り方・シェア（2026-08-20 追加） */
         .share-card {
