@@ -750,12 +750,26 @@
             <h2 class="section-title">YouTubeで配っているアプリ</h2>
             <p class="section-note">動画の視聴者に、公式LINEのキーワードで配布しているLite PWAです。（ ）内が配布ワード。<strong>クライアントには「公式LINEで◯◯と送ってください」と伝えるだけで、簡単にお渡しできます</strong>（URLを教える必要はありません）。手順の音声ガイドと安全の注意が入っています。<br><strong>「準備中」と付いているワードは、まだLINEの自動応答を設定していません</strong>（送っても返りません）。そのアプリはURLを直接お渡しください。</p>
             <div class="apps-grid">
+                <div class="app-card" onclick="openModal('memai')">
+                    <div class="app-icon">
+                        <img src="22.png" alt="ゆっくりもどす">
+                    </div>
+                    <div class="app-name">ゆっくりもどす</div>
+                    <div class="app-category">めまい・平衡感覚<span class="app-word">LINE「めまい」</span></div>
+                </div>
+                <div class="app-card" onclick="openModal('ago')">
+                    <div class="app-icon">
+                        <img src="23.png" alt="あごナビ">
+                    </div>
+                    <div class="app-name">あごナビ</div>
+                    <div class="app-category">顎・噛み合わせ<span class="app-word">LINE「あご」</span></div>
+                </div>
                 <div class="app-card" onclick="openModal('mimitone')">
                     <div class="app-icon">
                         <img src="18.png" alt="みみトーン">
                     </div>
                     <div class="app-name">みみトーン</div>
-                    <div class="app-category">耳鳴り・聴覚<span class="app-word app-word-pending">LINE「みみ」準備中</span></div>
+                    <div class="app-category">耳鳴り・聴覚<span class="app-word">LINE「みみ」</span></div>
                 </div>
                 <div class="app-card" onclick="openModal('kokyu')">
                     <div class="app-icon">
@@ -893,6 +907,36 @@
 
         // アプリデータ
         const apps = {
+            memai: {
+                word: 'めまい',
+                name: 'ゆっくりもどす',
+                category: 'めまい・平衡感覚',
+                icon: '22.png',
+                description: 'ふわふわめまいのための「向き」と「戻りの速さ」のガイド。頭を向けて、行きよりゆっくり戻す。ヨー・ピッチ・ローの3つの面で、いま使っている半規管と耳石器を表示しながら音声で誘導します。',
+                features: [
+                    '1レップ＝向ける2秒 → 止める2秒 → 戻す4秒（戻りだけ倍）',
+                    '真ん中の目印（＋・●・ランダムな文字・数字）を見つめたまま頭だけ動かす',
+                    'いまの向きが使っている半規管と耳石器（卵形嚢・球形嚢）を常時表示',
+                    '斜めは入れない（ヨー・ピッチ・ローの3面のみ）',
+                    '停止ボタン常設＋開始前に受診フラグ'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/memai-lite-pwa/'
+            },
+            ago: {
+                word: 'あご',
+                name: 'あごナビ',
+                category: '顎・噛み合わせ',
+                icon: '23.png',
+                description: '顎のワークは順番が長いので、7つの姿勢の順番を声で全部読み上げます。押し合い（アイソメトリック）5秒×4 → 前後5往復 → 左右5往復。開き方の前後をカメラで見比べる機能つき。',
+                features: [
+                    '7つの姿勢 × 押し合い5秒×4 → 前後5往復 → 左右5往復（約4分40秒）',
+                    '指示を言い終わってからカウントが始まる',
+                    'カメラで口元だけを撮って開き方の前後を比較（端末内のみ・送信なし）',
+                    'やった日の記録（直近30日と連続日数）',
+                    '強くしない・音は指標にしない・痛みが出たらやめる、を最初に提示'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/ago-lite-pwa/'
+            },
             kokyu: {
                 word: 'こきゅう',
                 name: '呼吸のスイッチ',
@@ -934,8 +978,6 @@
             },
             mimitone: {
                 word: 'みみ',
-                wordStatus: 'pending', // ★LINE側のキーワード応答が未設定。設定できたらこの行を消す
-                wordNote: '「みみ」の自動応答はまだ設定していません。今このワードを送っても何も返りません。クライアントに伝える前に、下のURLを直接お渡しください。',
                 name: 'みみトーン',
                 category: '耳鳴り・聴覚',
                 icon: '18.png',
