@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNT Neuro App Collection | 科学的トレーニングアプリ</title>
+    <meta name="theme-color" content="#2B5B84">
+    <meta name="apple-mobile-web-app-title" content="FNT Apps">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
     <style>
         * {
             margin: 0;
@@ -14,6 +21,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
             background: linear-gradient(135deg, #4A3A8C 0%, #2B5B84 50%, #1BA3CC 100%);
+            color: #ffffff;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -199,16 +207,15 @@
 
         h1 {
             font-size: 2.5rem;
-            background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* 以前は紫→シアンのグラデ文字だったが、地色が同じ紫→シアンなので文字が沈んで読めなかった（2026-08-20修正） */
+            color: #ffffff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
             margin-bottom: 15px;
             font-weight: 800;
         }
 
         .subtitle {
-            color: #666;
+            color: rgba(255, 255, 255, 0.92);
             font-size: 1.1rem;
             line-height: 1.6;
             max-width: 600px;
@@ -216,13 +223,54 @@
         }
 
         .section-title {
+            color: #ffffff;
             font-size: 20px; font-weight: 700; margin: 34px 0 6px; letter-spacing: .02em;
             display: flex; align-items: center; gap: 10px;
         }
         .section-title::before { content: ""; width: 4px; height: 22px; border-radius: 2px; background: currentColor; opacity: .55; }
-        .section-note { font-size: 13px; opacity: .7; margin: 0 0 14px; line-height: 1.7; }
+        .section-note { font-size: 13px; color: rgba(255, 255, 255, 0.88); margin: 0 0 14px; line-height: 1.7; }
         .app-word { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
             border: 1px solid currentColor; font-size: 11px; opacity: .85; }
+        /* 白いカード・モーダル・認証カードの中は濃い文字。body の白が漏れないよう明示する */
+        .app-card, .modal-content, .password-container { color: #333333; }
+
+        /* 配り方・シェア（2026-08-20 追加） */
+        .share-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333333;
+            border-radius: 25px;
+            padding: 28px;
+            margin: 10px 20px 40px;
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .share-qr { text-align: center; }
+        .share-qr img { width: 180px; height: 180px; display: block; background: #fff; border-radius: 14px; }
+        .share-qr-label { font-size: 0.8rem; color: #666; margin-top: 8px; }
+        .share-body { flex: 1; min-width: 260px; }
+        .share-lead { font-size: 0.95rem; line-height: 1.8; margin-bottom: 10px; }
+        .share-url {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.9rem; color: #1BA3CC; word-break: break-all; margin-bottom: 14px;
+        }
+        .share-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        .share-btn {
+            appearance: none; border: none; cursor: pointer; font-family: inherit;
+            padding: 12px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+            color: #fff; background: linear-gradient(135deg, #4A3A8C, #1BA3CC);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .share-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(27, 163, 204, 0.35); }
+        .share-btn:disabled { opacity: 0.7; cursor: default; transform: none; box-shadow: none; }
+        .share-btn-sub { background: #fff; color: #4A3A8C; border: 2px solid #4A3A8C; }
+        .share-note { font-size: 0.78rem; color: #888; margin-top: 12px; line-height: 1.7; }
+        @media (max-width: 600px) {
+            .share-card { flex-direction: column; text-align: center; }
+            .share-buttons { justify-content: center; }
+        }
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -720,6 +768,25 @@
                     <div class="app-category">周辺視野・空間認識<span class="app-word">LINE「しや」</span></div>
                 </div>
             </div>
+
+            <h2 class="section-title">クライアントへの渡し方</h2>
+            <p class="section-note">アプリは公式LINEのキーワードで配っています。<strong>この画面を見せて読み取ってもらうのが一番速いです</strong>（URLを打ってもらう必要はありません）。</p>
+            <div class="share-card">
+                <div class="share-qr">
+                    <img src="line-qr.png" alt="BDCオンラインスクール公式LINEのQRコード">
+                    <p class="share-qr-label">BDCオンラインスクール公式LINE</p>
+                </div>
+                <div class="share-body">
+                    <p class="share-lead">カメラで読み取って友だち追加 → 上のカードにある<strong>配布ワード</strong>（「みみ」など）を送ると、アプリがすぐ届きます。</p>
+                    <p class="share-url">https://lin.ee/pXqata2</p>
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="copyLine(this)">LINEのURLをコピー</button>
+                        <button class="share-btn share-btn-sub" onclick="shareLine(this)">LINEを共有</button>
+                        <button class="share-btn share-btn-sub" onclick="sharePage(this)">このページを共有</button>
+                    </div>
+                    <p class="share-note">※このページはパスワードで保護されています。ページを共有するときは、<strong>パスワードは同じメッセージに書かず、別に伝えてください</strong>。</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -731,6 +798,53 @@
     </div>
 
     <script>
+
+        // 配り方・シェア（2026-08-20 追加）
+        const LINE_URL = 'https://lin.ee/pXqata2';
+
+        function flashBtn(btn, msg) {
+            const original = btn.textContent;
+            btn.textContent = msg;
+            btn.disabled = true;
+            setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 1600);
+        }
+
+        async function copyText(text, btn, okMsg) {
+            try {
+                await navigator.clipboard.writeText(text);
+                flashBtn(btn, okMsg);
+                return;
+            } catch (e) { /* 下のフォールバックへ */ }
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); flashBtn(btn, okMsg); }
+            catch (e) { flashBtn(btn, 'コピーできませんでした'); }
+            document.body.removeChild(ta);
+        }
+
+        function copyLine(btn) { copyText(LINE_URL, btn, 'コピーしました'); }
+
+        async function shareLine(btn) {
+            if (navigator.share) {
+                try { await navigator.share({ title: 'BDCオンラインスクール公式LINE', url: LINE_URL }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            copyText(LINE_URL, btn, 'コピーしました');
+        }
+
+        async function sharePage(btn) {
+            const url = location.href.split('#')[0];
+            if (navigator.share) {
+                try { await navigator.share({ title: 'FNT Neuro App Collection', url: url }); return; }
+                catch (e) { if (e && e.name === 'AbortError') return; }
+            }
+            copyText(url, btn, 'URLをコピーしました');
+        }
+
         // パスワード認証
         const CORRECT_PASSWORD = 'fnt0915';
         

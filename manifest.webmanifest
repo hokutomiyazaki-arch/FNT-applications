@@ -1,0 +1,31 @@
+{
+  "name": "FNT Neuro App Collection",
+  "short_name": "FNT Apps",
+  "description": "Functional Neuro Training の評価・トレーニングアプリと、YouTubeで配布しているLite PWAの一覧。",
+  "start_url": ".",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#2B5B84",
+  "theme_color": "#2B5B84",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
