@@ -772,23 +772,6 @@
                 </div>
             </div>
 
-            <h2 class="section-title">クライアントへの渡し方</h2>
-            <p class="section-note">アプリは公式LINEのキーワードで配っています。<strong>この画面を見せて読み取ってもらうのが一番速いです</strong>（URLを打ってもらう必要はありません）。<br><strong>※このページはコミュニティ会員だけの特典です。ページのURLとパスワードは外に出さないでください。</strong></p>
-            <div class="share-card">
-                <div class="share-qr">
-                    <img src="line-qr.png" alt="BDCオンラインスクール公式LINEのQRコード">
-                    <p class="share-qr-label">BDCオンラインスクール公式LINE</p>
-                </div>
-                <div class="share-body">
-                    <p class="share-lead">カメラで読み取って友だち追加 → 上のカードにある<strong>配布ワード</strong>（「みみ」など）を送ると、アプリがすぐ届きます。</p>
-                    <p class="share-url">https://lin.ee/pXqata2</p>
-                    <div class="share-buttons">
-                        <button class="share-btn" onclick="copyLine(this)">LINEのURLをコピー</button>
-                        <button class="share-btn share-btn-sub" onclick="shareLine(this)">LINEを共有</button>
-                    </div>
-                    <p class="share-note">※配るのは<strong>公式LINEだけ</strong>です。<strong>このページ自体は会員特典なので、URLとパスワードを会員以外に渡さないでください。</strong>クライアントには「公式LINEで◯◯と送ってください」とだけ伝えれば、アプリは渡せます。</p>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -801,8 +784,7 @@
 
     <script>
 
-        // 配り方・シェア（2026-08-20 追加）
-        const LINE_URL = 'https://lin.ee/pXqata2';
+        // 配り方・シェア：FNT公式LINEのURL確定待ちで一旦取り下げ（2026-08-20）
 
         function flashBtn(btn, msg) {
             const original = btn.textContent;
@@ -826,16 +808,6 @@
             try { document.execCommand('copy'); flashBtn(btn, okMsg); }
             catch (e) { flashBtn(btn, 'コピーできませんでした'); }
             document.body.removeChild(ta);
-        }
-
-        function copyLine(btn) { copyText(LINE_URL, btn, 'コピーしました'); }
-
-        async function shareLine(btn) {
-            if (navigator.share) {
-                try { await navigator.share({ title: 'BDCオンラインスクール公式LINE', url: LINE_URL }); return; }
-                catch (e) { if (e && e.name === 'AbortError') return; }
-            }
-            copyText(LINE_URL, btn, 'コピーしました');
         }
 
         // パスワード認証
