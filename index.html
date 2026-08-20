@@ -666,6 +666,14 @@
                     <div class="app-name">Random Target</div>
                     <div class="app-category">視標ランダム提示</div>
                 </div>
+
+                <div class="app-card" onclick="openModal('mimitone')">
+                    <div class="app-icon">
+                        <img src="18.png" alt="みみトーン">
+                    </div>
+                    <div class="app-name">みみトーン</div>
+                    <div class="app-category">耳鳴り・聴覚</div>
+                </div>
             </div>
         </div>
     </div>
@@ -724,6 +732,20 @@
 
         // アプリデータ
         const apps = {
+            mimitone: {
+                name: 'みみトーン',
+                category: '耳鳴り・聴覚',
+                icon: '18.png',
+                description: '耳鳴りと同じ高さの音を左右別々に出し、止めた直後の変化と、元の大きさに戻るまでの秒数を記録するアプリです。「その耳鳴りは音で動くタイプか」をクライアントとその場で確かめられます。',
+                features: [
+                    '左右で別々の周波数・音量を同時に出せる（片側性の耳鳴りに対応）',
+                    '純音／狭帯域ノイズを選択',
+                    '60秒 → 停止 → 10秒待ってから判定（鳴らしている最中の判断を封じる）',
+                    '元の大きさに戻るまでの秒数を記録',
+                    '音量はコード側で上限をクリップ（過剰な音入力は逆効果という報告があるため）'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/mimi-lite-pwa/'
+            },
             nback: {
                 name: 'N-Back 40Hz Gamma Wave',
                 category: 'ワーキングメモリー評価',
