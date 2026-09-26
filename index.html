@@ -744,6 +744,14 @@
                     <div class="app-name">Random Target</div>
                     <div class="app-category">視標ランダム提示</div>
                 </div>
+
+                <div class="app-card" onclick="openModal('shrinkquote')">
+                    <div class="app-icon">
+                        <img src="24.png" alt="縮む名言">
+                    </div>
+                    <div class="app-name">縮む名言</div>
+                    <div class="app-category">視覚・眼球運動</div>
+                </div>
             </div>
 
             <h2 class="section-title">YouTubeで配っているアプリ</h2>
@@ -906,6 +914,20 @@
 
         // アプリデータ
         const apps = {
+            shrinkquote: {
+                name: '縮む名言',
+                category: '視覚・眼球運動',
+                icon: '24.png',
+                description: '名言・ことわざが、選んだ最小サイズまで縮んでは元の大きさに戻るのをくり返し、画面の中を上下左右・斜めに動き回ります。小さくなっていく文字を最後まで目で追う視覚トレーニングです。',
+                features: [
+                    '最小サイズを2〜40pxから選べる（最大は24〜200px）',
+                    '動き回る（8方向／自由な角度）か、中央で止めるかを選べる',
+                    '日本語・英語・ミックス。英語のあとに日本語の意味も出せる',
+                    '縮むと高く、大きくなると低くなるピューン音',
+                    '縮む時間・最小で止める時間・動く速さを調整できる'
+                ],
+                url: 'https://hokutomiyazaki-arch.github.io/shrink-quote/'
+            },
             memai: {
                 word: 'めまい',
                 name: 'ゆっくりもどす',
