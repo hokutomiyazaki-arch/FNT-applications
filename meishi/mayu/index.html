@@ -45,6 +45,7 @@
 
     <div class="btns">
       <a class="btn main"  id="line"  target="_blank" rel="noopener">LINE で友だち追加</a>
+      <a class="btn" id="myinsta" target="_blank" rel="noopener">まゆ の Instagram（@mayuko.fnt）</a>
       <a class="btn" id="insta" target="_blank" rel="noopener">宮崎ほくと の Instagram</a>
       <a class="btn"    id="yt"    target="_blank" rel="noopener">YouTube「カラダマニアちゃんねる」</a>
       <a class="btn"  id="mail">メールを送る</a>
@@ -71,6 +72,7 @@ const ME = {
   addr:  "",   // 会社の住所
   email: "",   // 例：xxxx@legrandchariot.com
   line:  "",   // LINE の友だち追加 URL（例：https://line.me/ti/p/xxxx）
+  myinsta: "https://www.instagram.com/mayuko.fnt/",   // まゆさんの Instagram
   insta: "https://www.instagram.com/hokuto_miyazaki/",   // 宮崎ほくとさんの Instagram
   yt:    "https://www.youtube.com/@functional-neuro-training",   // カラダマニアちゃんねる
 };
@@ -81,12 +83,13 @@ document.getElementById("kana").textContent = ME.kana;
 document.getElementById("addr").textContent = ME.addr && "〒 " + ME.addr;
 const set = (id, url) => { const a = document.getElementById(id); if (url) a.href = url; else a.style.display = "none"; };
 set("line", ME.line);
+set("myinsta", ME.myinsta);
 set("insta", ME.insta);
 set("yt", ME.yt);
 set("mail", ME.email && "mailto:" + ME.email);
 
 const vcf = ["BEGIN:VCARD", "VERSION:3.0", "FN:" + ME.name, "ORG:株式会社Le grand chariot",
-  "TITLE:人と人とをつなぐ秘書／ときどき宴会番長", ME.addr && "ADR;TYPE=WORK:;;" + ME.addr + ";;;;", ME.email && "EMAIL:" + ME.email,
+  "TITLE:人と人とをつなぐ秘書／ときどき宴会番長", ME.addr && "ADR;TYPE=WORK:;;" + ME.addr + ";;;;", ME.email && "EMAIL:" + ME.email, ME.myinsta && "URL:" + ME.myinsta,
   "END:VCARD"].filter(Boolean).join("\r\n");
 const save = document.getElementById("save");
 save.href = URL.createObjectURL(new Blob([vcf], {type: "text/vcard"}));
